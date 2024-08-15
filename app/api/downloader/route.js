@@ -6,11 +6,11 @@ export async function GET(request) {
     const url = searchParams.get('url')
     const info = await ytdl.getInfo(url)
     const videoFormat = ytdl.filterFormats(info.formats, 'video');
-    const format = ytdl.chooseFormat(videoFormat, { quality: 'highestaudio' })
-
+    const format = ytdl.chooseFormat(videoFormat, { quality: 'highest' })
     const fileName = `${info.videoDetails.title}.${format.container}`
-    const responsHeader = { 'content -Disposition': `attachment: filename="${fileName}"` }
+    const responseHeader = { 'Content-Disposition': `attachment; filename="${fileName}"` };
 
-    return NextResponse.json({ format, responsHeader, fileName })
+
+    return NextResponse.json({ format, responseHeader, fileName })
 
 }
