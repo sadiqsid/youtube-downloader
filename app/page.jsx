@@ -20,7 +20,7 @@ export default function Home() {
     setError('');
 
     try {
-      const res = await axios.get(`/api/downloader?url=${videoLink}`);
+      const res = await axios.get(`https://udownloader.vercel.app/api/downloader?url=${videoLink}`);
       console.log(res.data)
       setFinalLink(res.data.format.url);
       setShowDownload(true);
