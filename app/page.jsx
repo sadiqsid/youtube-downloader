@@ -21,9 +21,10 @@ export default function Home() {
 
     try {
       const res = await axios.get(`/api/downloader?url=${videoLink}`);
+      console.log(res.data)
       setFinalLink(res.data.format.url);
       setShowDownload(true);
-      console.log(res.data)
+      
     } catch (err) {
       console.log(err);
       setError('Failed to download video. Please try again.');
