@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 
 export default function Home() {
-  const [videoLink, setVideoLink] = useState('');
+  const [videoLink, setVideoLink] = useState('https://www.youtube.com/watch?v=ipuz8ASBrRE');
   const [finalLink, setFinalLink] = useState('');
   const [showDownload, setShowDownload] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,7 @@ export default function Home() {
     setError('');
 
     try {
-      const res = await axios.get(`https://udownloader.vercel.app/api/downloader?url=${videoLink}`);
+      const res = await axios.get(`/api/route?url=${videoLink}`);
       console.log(res.data)
       setFinalLink(res.data.format.url);
       setShowDownload(true);
